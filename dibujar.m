@@ -1,5 +1,4 @@
 function y = dibujar(M)
-    clc
     fprintf('Estado actual \n\n');
     fprintf(' %i | %i | %i \n',M(1,1), M(1,2), M(1,3));
     fprintf(' ---------\n');
