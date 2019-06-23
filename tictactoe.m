@@ -3,7 +3,7 @@
 clc
 
 fprintf(' \n Entrenando algoritmo...\n \n')
-for juegos = 1:1
+for juegos = 1:100
     
     E= {};
     M = zeros(3,3);
@@ -17,7 +17,7 @@ for juegos = 1:1
             a = exploracion(stateToIndex(estado), RM);
             [M, error] = ingresar(M, a, 1);
             if error == 1
-                disp('Jugada invalida 1')
+%                 disp('Jugada invalida 1')
                 i = i - 1;
             else
                 j = j - 1;
@@ -32,7 +32,7 @@ for juegos = 1:1
             [M, error] = ingresar(M,a,2);
 
             if error == 1
-                disp('Jugada invalida 2')
+%                 disp('Jugada invalida 2')
                 i = i - 1;
             else
                 j = j - 1;

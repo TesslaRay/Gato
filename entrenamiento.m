@@ -1,13 +1,16 @@
-% function s = entrenamiento(RM,experiencias)
+function RM = entrenamiento(RM,experiencias)
+    
     clc
     LR = 1/9;
     DF = 0.5;
-    max_pasos = 10;
-    fprintf(' \n Ajustando pesos matriz refuerzos mixtos ...\n \n')
-
+    RM_anterior = 0;
+    max_pasos = 100;
+    
+    fprintf('Ajustando pesos matriz refuerzos mixtos ...\n \n')    
     for h = 1:max_pasos
         for e = 1:length(experiencias)
-
+            
+            % Asignación desde la matriz de experiencias
             estado = stateToIndex(experiencias(e).E);
             accion = experiencias(e).A;
             refuerzo = experiencias(e).R;
@@ -15,21 +18,18 @@
 
             siguienteRefuerzo = max(RM(siguiente_estado,:));
 
-            RM(estado,accion) = RM(estado,accion) + LR*[refuerzo + DF*siguienteRefuerzo - RM(estado,accion)];
-            
+            RM(estado,accion) = RM(estado,accion) + LR*(refuerzo + DF*siguienteRefuerzo - RM(estado,accion));                        
         end
         
+        error = abs(RM_anterior - sum(RM));
+        RM_anterior = sum(RM);
         
+        if error < 1E-4
+            break
+        end
+                
     end
-    
+    fprintf(' \n Cambios realizados: %d\n \n',h)
     fprintf(' \n Pesos ajustados ...\n \n')
-
-    
-%     for e = 1:length(experiencias)
-%         estado = stateToIndex(experiencias(e).E);
-%         accion = experiencias(e).A;
-%         fprintf('Estado modificado %d: ', estado);
-%         fprintf(' %.3f: \n', RM(estado,accion));
-%     end
-
-% end
+  
+end
