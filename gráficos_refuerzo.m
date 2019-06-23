@@ -5,8 +5,7 @@ estado = 1;
 plot(accion,RM(estado,:),'o','Color','blue')
 hold on
 plot(accion,RM(estado,:),'LineWidth',2,'Color','blue')
-% axis([1 9 0.35 0.37])
-xlabel('Acción')
-ylabel('Refuerzo')
-title(['Refuerzo para estado ',num2str(estado)])
+xlabel('Acción','FontSize',20)
+ylabel('Refuerzo','FontSize',20)
+title(['Refuerzo para estado ',num2str(estado)],'FontSize',20)
 grid on
