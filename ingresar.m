@@ -1,8 +1,14 @@
-function M = ingresar(M,x,y,c)
-    if M(x,y) == 0
-        M(x,y) = c;
-    else if M(x,y) == 1 | M(x,y) == 2
-        fprintf('\n Casilla ocupada \n ');
+function [M, error] = ingresar(M,a,c)
+    for i = 1:3
+        for j = 1:3
+            if 3*j + i - 3 == a
+                if M(j,i) == 1 | M(j,i) == 2
+                    error = 1;
+                else
+                    error = 0;
+                    M(j,i) = c;            
+                end
+            end
         end
-    M
+    end    
 end

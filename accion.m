@@ -3,7 +3,6 @@ function M = accion(M, a)
 %   Output: Matriz de estado luego de la acción
 %   La acción 'realiza la jugada', ie agrega un 1 donde corresponde la
 %   acción
-    
     for i = 1:3
         for j = 1:3
             if 3*j + i - 3 == a
@@ -11,5 +10,4 @@ function M = accion(M, a)
             end
         end
     end
-    
 end

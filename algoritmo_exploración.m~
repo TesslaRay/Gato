@@ -1,0 +1,4 @@
+%% Algoritmo de exploración
+experiencias = [];
+
+load('RM.mat');

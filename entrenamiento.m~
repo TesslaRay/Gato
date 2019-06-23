@@ -1,0 +1,23 @@
+% function s = entrenamiento(RM,experiencias)
+    clc
+    for ex
+    estado = E(1).E;
+    estado = stateToIndex(estado);
+    
+    accion = E(1).a;
+    
+    siguiente_estado = E(1).s_R;
+    siguiente_estado = stateToIndex(siguiente_estado);
+    
+    refuerzo = E(1).R;
+    
+    siguienteRefuerzo = max(RM(siguiente_estado));
+    
+    LR = 1/9;
+    DF = 0.5;
+        
+    RM(estado,accion) = RM(estado,accion) + LR*[R + DF*siguienteRefuerzo - RM(estado,accion)];
+    fprintf('Estado modificado %d: ', estado);
+    fprintf(' %.3f: \n', RM(estado,accion));
+
+% end
