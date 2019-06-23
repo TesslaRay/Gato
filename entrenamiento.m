@@ -2,7 +2,7 @@
     clc
     LR = 1/9;
     DF = 0.5;
-    max_pasos = 50;
+    max_pasos = 10;
     fprintf(' \n Ajustando pesos matriz refuerzos mixtos ...\n \n')
 
     for h = 1:max_pasos
@@ -21,6 +21,9 @@
         
         
     end
+    
+    fprintf(' \n Pesos ajustados ...\n \n')
+
     
 %     for e = 1:length(experiencias)
 %         estado = stateToIndex(experiencias(e).E);
