@@ -2,7 +2,7 @@
 clc
 
 fprintf(' \n Entrenando algoritmo...\n \n')
-max_juegos = 300000;
+max_juegos = 100000;
 for juegos = 1:max_juegos
     
     E= {};
@@ -58,7 +58,7 @@ for juegos = 1:max_juegos
         i = i + 1;
 
         if j == 0
-            E(length(E)).R = 0.4;
+            E(length(E)).R = 0.3;
 %             E(length(E)).s_E = M;
             break
         end
@@ -74,7 +74,7 @@ for juegos = 1:max_juegos
         experiencias(l + i) = E(i);
     end
     
-    fprintf(' \n Juegos : %d\n \n',juegos)    
+    fprintf(' \n Juegos : %d\n \n',juegos)
     
 end
 

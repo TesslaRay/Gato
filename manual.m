@@ -17,7 +17,7 @@ clc
             estado = M;
             fprintf('Jugador 1 \n')
 %             a = input('ingresar jugada: ');        
-%             a = exploracion(stateToIndex(estado), RM);
+% %             a = exploracion(stateToIndex(estado), RM);
             ww = RM(stateToIndex(estado),:);
             [buff, a] = max(ww);
             [M, error] = ingresar(M,a,1);

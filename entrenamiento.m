@@ -1,24 +1,30 @@
-function RM = entrenamiento(RM,experiencias)
+% function RM = entrenamiento(Q,experiencias)
     
-    clc
     LR = 1/9;
-    DF = 0.5;
+    DF = 0.6;
     RM_anterior = 0;
     max_pasos = 100;
-    
-    fprintf('Ajustando pesos matriz refuerzos mixtos ...\n \n')    
+        
+    clc
+    fprintf(' Ajustando pesos matriz refuerzos mixtos ...\n \n')    
     for h = 1:max_pasos
-        for e = 1:length(experiencias)
+        for e = length(experiencias):-1:1
             
             % Asignación desde la matriz de experiencias
+            experiencias(e).E;
             estado = stateToIndex(experiencias(e).E);
             accion = experiencias(e).A;
             refuerzo = experiencias(e).R;
-            siguiente_estado = stateToIndex(experiencias(e).s_E);
-
-            siguienteRefuerzo = max(RM(siguiente_estado,:));
-
-            RM(estado,accion) = RM(estado,accion) + LR*(refuerzo + DF*siguienteRefuerzo - RM(estado,accion));                        
+            
+            if experiencias(e).R == 1 | experiencias(e).R == -1 | experiencias(e).R == 0.4
+                siguienteRefuerzo = 0;                
+            else
+                siguiente_estado = stateToIndex(experiencias(e).s_E);
+                siguienteRefuerzo = max(RM(siguiente_estado,:));                
+            end
+                        
+            
+            RM(estado,accion) = RM(estado,accion) + LR*(refuerzo + DF*siguienteRefuerzo - RM(estado,accion));                       
         end
         
         error = abs(RM_anterior - sum(RM));
@@ -26,10 +32,15 @@ function RM = entrenamiento(RM,experiencias)
         
         if error < 1E-4
             break
-        end
-                
+        end  
+        
     end
-    fprintf(' \n Cambios realizados: %d\n \n',h)
-    fprintf(' \n Pesos ajustados ...\n \n')
+    
+%     for e = length(experiencias):-1:1
+% %         fprintf(' \n Estado mejorado: %d\n \n',stateToIndex(experiencias(e).E));
+%     end
+
+%     fprintf(' \n Cambios realizados: %d\n \n',h)
+    fprintf(' \n Pesos ajustados ...\n \n') 
   
-end
+% end
