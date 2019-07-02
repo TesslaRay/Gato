@@ -6,7 +6,7 @@
     max_pasos = 100;
         
     clc
-    fprintf(' Ajustando pesos matriz refuerzos mixtos ...\n \n')    
+    fprintf(' \n Ajustando pesos matriz refuerzos mixtos ...\n \n')    
     for h = 1:max_pasos
         for e = length(experiencias):-1:1
             

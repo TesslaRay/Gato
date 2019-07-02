@@ -18,8 +18,8 @@ clc
             fprintf('Jugador 1 \n')
 %             a = input('ingresar jugada: ');        
 % %             a = exploracion(stateToIndex(estado), RM);
-            ww = RM(stateToIndex(estado),:);
-            [buff, a] = max(ww);
+            play = RM(stateToIndex(estado),:);
+            [buff, a] = max(play);
             [M, error] = ingresar(M,a,1);
             if error == 1
                 fprintf('JUGADA INVALIDA, intente nuevamente \n');

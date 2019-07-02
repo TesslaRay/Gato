@@ -2,7 +2,7 @@
 clc
 
 fprintf(' \n Entrenando algoritmo...\n \n')
-max_juegos = 300000;
+max_juegos = 1E5;
 for juegos = 1:max_juegos
     
     E= {};

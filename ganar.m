@@ -72,6 +72,4 @@ function y = ganar(M)
         y = 2;
     end
     
-    
-    
 end
